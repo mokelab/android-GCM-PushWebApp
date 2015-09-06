@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+<title></title>
+</head>
+<body>
+<section id="container"></section>
+
+<script id="template" type="text/ractive">
+  <h1>GCM tester</h1>
+  <section id="form">
+    <label>Server API Key</label><br/>
+    <input type="text" value="{{apiKey}}"/><br/>
+
+    <label>registration token</label><br/>
+    <input type="text" value="{{token}}"/><br/>
+
+    <label>registration token</label><br/>
+    <button on-click="add">Add</button>
+    <table>
+    {{#entries:i}}
+    <tr>
+      <td><input type="text" value="{{key}}"/></td>
+      <td><input type="text" value="{{value}}"/></td>
+      <td><select value="{{type}}">
+          <option value="0">string</option>
+          <option value="1">number</option>
+          <option value="2">boolean</option>
+      </select>
+      </td>
+      <td><button on-click="remove:{{i}}">Remove</button></td>
+    </tr>
+    {{/}}
+    </table>
+    <button on-click="submit">Create curl request</button>
+    <pre>{{msg}}</pre>
+  </section>
+</script>  
+
+<script src="https://code.jquery.com/jquery-1.9.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ractive/0.7.3/ractive.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
